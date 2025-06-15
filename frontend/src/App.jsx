@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import './App.css';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -40,23 +41,24 @@ function App() {
     })
     .then(res => res.json())
     .then(created => {
-      // Formular zurücksetzen und Liste neu laden
-      setName(''); setDescription(''); setPrice(''); setImageUrl('');
+      setName('');
+      setDescription('');
+      setPrice('');
+      setImageUrl('');
       loadProducts();
     })
     .catch(err => console.error('Fehler beim Anlegen:', err));
   };
 
-  if (loading) return <p>Lädt …</p>;
+  if (loading) return <p className="loading">Lädt …</p>;
 
   return (
-    <div style={{ padding: '2rem' }}>
+    <div className="container">
       <h1>Produkte</h1>
 
-      {/* === Formular zum Hinzufügen === */}
-      <section style={{ marginBottom: '2rem' }}>
+      <section className="add-section">
         <h2>Neues Produkt hinzufügen</h2>
-        <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '0.5rem', maxWidth: '400px' }}>
+        <form onSubmit={handleSubmit} className="add-form">
           <input
             placeholder="Name"
             value={name}
@@ -85,32 +87,20 @@ function App() {
         </form>
       </section>
 
-      {/* === Produktliste === */}
-      {products.length === 0
-        ? <p>Keine Produkte gefunden.</p>
-        : <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '1rem'
-          }}>
-            {products.map(p => (
-              <div key={p.id} style={{
-                border: '1px solid #ccc',
-                borderRadius: '8px',
-                padding: '1rem'
-              }}>
-                <img
-                  src={p.imageUrl}
-                  alt={p.name}
-                  style={{ width: '100%', borderRadius: '4px' }}
-                />
-                <h2>{p.name}</h2>
-                <p>{p.description}</p>
-                <p style={{ fontWeight: 'bold' }}>{p.price.toFixed(2)} CHF</p>
-              </div>
-            ))}
-          </div>
-      }
+      {products.length === 0 ? (
+        <p className="no-products">Keine Produkte gefunden.</p>
+      ) : (
+        <div className="products-grid">
+          {products.map(p => (
+            <div key={p.id} className="product-card">
+              <img src={p.imageUrl} alt={p.name} className="product-image" />
+              <h2 className="product-title">{p.name}</h2>
+              <p>{p.description}</p>
+              <p className="product-price">{p.price.toFixed(2)} CHF</p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
