@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:3000")
 public class ProductController {
 
     @Autowired
@@ -17,5 +18,10 @@ public class ProductController {
     @GetMapping("/products")
     public List<Product> getAllProducts() {
         return productRepository.findAll();
+    }
+
+    @PostMapping("/products")
+    public Product createProduct(@RequestBody Product product) {
+        return productRepository.save(product);
     }
 }
