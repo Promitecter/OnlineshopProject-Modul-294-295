@@ -1,16 +1,15 @@
+import '../styles/components/ProductList.css';
 import ProductCard from './ProductCard';
+//import './ProductList.css'; // optional
+// import '../App.css';
 
 export default function ProductList({ products, onDelete }) {
-  if (!products.length) {
-    return <p className="no-products">Keine Produkte gefunden.</p>;
-  }
-
   return (
     <div className="products-grid">
-      {products.map((product) => (
+      {products.map(p => (
         <ProductCard
-          key={product.id}
-          product={product}
+          key={p.id}
+          product={p}
           onDelete={onDelete}
         />
       ))}

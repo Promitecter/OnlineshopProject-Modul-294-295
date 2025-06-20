@@ -1,0 +1,17 @@
+.contact
+{
+    padding: 1rem;
+}
+
+.contact h1
+{
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.contact p
+{
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
