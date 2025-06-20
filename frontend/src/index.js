@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { HelmetProvider } from 'react-helmet-async';
+import './index.css';
 import App from './App';
-import './styles/LayoutLarge.css';
-import './styles/LayoutSmall.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+root.render(
+    <HelmetProvider>
+        <App />
+    </HelmetProvider>
+);
