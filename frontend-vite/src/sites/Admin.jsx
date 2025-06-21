@@ -1,7 +1,7 @@
 import '../styles/pages/Admin.css';
 import { useEffect, useState } from 'react';
-import ProductList from '../components/ProductList';
-import ProductForm from '../components/ProductForm';
+import ProductList from '../../../frontend-vite/src/components/ProductList';
+import ProductForm from '../../../frontend-vite/src/components/ProductForm';
 // import '../App.css';
 
 export default function Admin() {

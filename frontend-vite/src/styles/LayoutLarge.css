@@ -1,5 +1,3 @@
-/* Desktop-Layout (ab 1024px) */
-@media (min-width: 1024px) {
 
 /*--------------------------*/
 /* Reset some default styles */
@@ -92,15 +90,4 @@ body
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
-}
-
-.products-grid
-{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-}
-
-
-
 }
