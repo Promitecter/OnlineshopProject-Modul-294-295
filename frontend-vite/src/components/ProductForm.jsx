@@ -26,10 +26,16 @@ export default function ProductForm({ initialProduct = null, onSubmit }) {
   const handleSubmit = async e => {
     e.preventDefault();
 
+    const parsedPrice = parseFloat(price);
+    if (parsedPrice < 0) {
+      alert('Der Preis muss positiv sein.');
+      return;
+    }
+
     const payload = {
       name,
       description,
-      price: parseFloat(price),
+      price: parsedPrice,
       imageUrl
     };
 
@@ -72,7 +78,8 @@ export default function ProductForm({ initialProduct = null, onSubmit }) {
       />
       <input
         type="number"
-        step="0.01"
+        step="0.05"
+        min="0"
         placeholder="Preis"
         value={price}
         onChange={e => setPrice(e.target.value)}

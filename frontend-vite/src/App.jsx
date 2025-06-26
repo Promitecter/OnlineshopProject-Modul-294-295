@@ -9,7 +9,6 @@ export default function App() {
   return (
     <>
       <MainNavBar />
-
       <main className="main-content">
         <Routes>
           <Route path="/"        element={<Frontpage />} />

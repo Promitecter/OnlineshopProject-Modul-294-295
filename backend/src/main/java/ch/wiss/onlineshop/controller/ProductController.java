@@ -32,9 +32,7 @@ public class ProductController {
 
     @PutMapping("/products/{id}")
     public Product updateProduct(@PathVariable Integer id, @RequestBody Product productDetails) {
-        Product product = productRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Product not found with id " + id));
-
+        Product product = productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not found with id " + id));
         product.setName(productDetails.getName());
         product.setDescription(productDetails.getDescription());
         product.setPrice(productDetails.getPrice());
