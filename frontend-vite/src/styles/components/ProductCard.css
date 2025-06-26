@@ -33,13 +33,19 @@
     margin: 0.5rem 1rem;
 }
 
+.card-actions
+{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+}
+
 .delete-button
 {
     background-color: #e74c3c;
     border: none;
     color: #fff;
     padding: 0.5rem 1rem;
-    margin: 1rem;
     border-radius: 4px;
     cursor: pointer;
 }
@@ -47,4 +53,19 @@
 .delete-button:hover
 {
     background-color: #c0392b;
+}
+
+.edit-button
+{
+    background-color: #3498db;
+    border: none;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-button:hover
+{
+    background-color: #2980b9;
 }

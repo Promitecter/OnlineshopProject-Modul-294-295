@@ -3,7 +3,7 @@ import ProductCard from './ProductCard';
 //import './ProductList.css'; // optional
 // import '../App.css';
 
-export default function ProductList({ products, onDelete }) {
+export default function ProductList({ products, onDelete, onEdit }) {
   return (
     <div className="products-grid">
       {products.map(p => (
@@ -11,6 +11,7 @@ export default function ProductList({ products, onDelete }) {
           key={p.id}
           product={p}
           onDelete={onDelete}
+          onEdit={onEdit}
         />
       ))}
     </div>

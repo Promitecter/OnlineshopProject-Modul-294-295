@@ -1,44 +1,64 @@
 import '../styles/components/ProductForm.css';
-import { useState } from 'react';
-// import './ProductForm.css'; // optional
-// import '../App.css';
+import { useState, useEffect } from 'react';
 
-export default function ProductForm({ onCreated }) {
+export default function ProductForm({ initialProduct = null, onSubmit }) {
+  const isEdit = Boolean(initialProduct);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
   const [imageUrl, setImageUrl] = useState('');
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    if (isEdit) {
+      setName(initialProduct.name);
+      setDescription(initialProduct.description);
+      setPrice(initialProduct.price);
+      setImageUrl(initialProduct.imageUrl || '');
+    } else {
+
+      setName('');
+      setDescription('');
+      setPrice('');
+      setImageUrl('');
+    }
+  }, [initialProduct]);
+
+  const handleSubmit = async e => {
     e.preventDefault();
-    const newProduct = {
+
+    const payload = {
       name,
       description,
       price: parseFloat(price),
       imageUrl
     };
-    fetch('http://localhost:8080/api/products', {
-      method: 'POST',
+
+    const url    = isEdit
+      ? `http://localhost:8080/api/products/${initialProduct.id}`
+      : `http://localhost:8080/api/products`;
+    const method = isEdit ? 'PUT' : 'POST';
+
+    const res = await fetch(url, {
+      method,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newProduct)
-    })
-      .then(res => res.json())
-      .then(created => {
-        // Callback ans Eltern-Component
-        if (typeof onCreated === 'function') {
-          onCreated(created);
-        }
-        // Formular zurücksetzen
-        setName('');
-        setDescription('');
-        setPrice('');
-        setImageUrl('');
-      })
-      .catch(err => console.error('Fehler beim Anlegen:', err));
+      body: JSON.stringify(payload)
+    });
+    if (!res.ok) {
+      console.error('Save failed', await res.text());
+      return;
+    }
+    const saved = await res.json();
+
+    onSubmit(saved);
+
+    if (!isEdit) {
+      setName(''); setDescription(''); setPrice(''); setImageUrl('');
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="product-form">
+    <form className='product-form' onSubmit={handleSubmit}>
+      <h2>{isEdit ? 'Produkt bearbeiten' : 'Neues Produkt anlegen'}</h2>
       <input
         placeholder="Name"
         value={name}
@@ -63,7 +83,7 @@ export default function ProductForm({ onCreated }) {
         value={imageUrl}
         onChange={e => setImageUrl(e.target.value)}
       />
-      <button type="submit">Hinzufügen</button>
+      <button type="submit">{isEdit ? 'Speichern' : 'Hinzufügen'}</button>
     </form>
   );
 }

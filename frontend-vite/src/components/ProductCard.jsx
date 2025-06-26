@@ -1,8 +1,6 @@
-// import './ProductCard.css';
-// import '../App.css';
 import '../styles/components/ProductCard.css';
 
-export default function ProductCard({ product, onDelete }) {
+export default function ProductCard({ product, onDelete, onEdit }) {
   return (
     <div className="product-card">
       {product.imageUrl && (
@@ -16,14 +14,24 @@ export default function ProductCard({ product, onDelete }) {
       <p>{product.description}</p>
       <p className="product-price">CHF {product.price.toFixed(2)}</p>
 
-      {typeof onDelete === 'function' && (
-        <button
-          className="delete-button"
-          onClick={() => onDelete(product.id)}
-        >
-          Löschen
-        </button>
-      )}
+      <div className="card-actions">
+        {typeof onEdit === 'function' && (
+          <button
+            className="edit-button"
+            onClick={() => onEdit(product)}
+          >
+            Bearbeiten
+          </button>
+        )}
+        {typeof onDelete === 'function' && (
+          <button
+            className="delete-button"
+            onClick={() => onDelete(product.id)}
+          >
+            Löschen
+          </button>
+        )}
+      </div>
     </div>
   );
 }

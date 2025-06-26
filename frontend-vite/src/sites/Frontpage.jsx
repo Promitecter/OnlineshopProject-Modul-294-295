@@ -1,6 +1,6 @@
 import '../styles/pages/Frontpage.css';
 import { useEffect, useState } from 'react';
-import ProductList from '../../../frontend-vite/src/components/ProductList';
+import ProductList from '../components/ProductList';
 
 export default function Frontpage() {
   const [products, setProducts] = useState([]);

@@ -1,23 +1,19 @@
 import '../styles/pages/Admin.css';
 import { useEffect, useState } from 'react';
-import ProductList from '../../../frontend-vite/src/components/ProductList';
-import ProductForm from '../../../frontend-vite/src/components/ProductForm';
-// import '../App.css';
+import ProductList from '../components/ProductList';
+import ProductForm from '../components/ProductForm';
 
 export default function Admin() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading]   = useState(true);
+  const [editingProduct, setEditingProduct] = useState(null);
 
   const loadProducts = () => {
     setLoading(true);
     fetch('http://localhost:8080/api/products')
-      .then(res => res.json())
+      .then(r => r.json())
       .then(data => {
         setProducts(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error('Fehler beim Laden:', err);
         setLoading(false);
       });
   };
@@ -26,13 +22,20 @@ export default function Admin() {
     loadProducts();
   }, []);
 
-  const handleDelete = (id) => {
+const handleDelete = id => {
     fetch(`http://localhost:8080/api/products/${id}`, { method: 'DELETE' })
-      .then(() => loadProducts())
-      .catch(err => console.error('Fehler beim Löschen:', err));
+      .then(() => {
+        setEditingProduct(null);
+        loadProducts();
+      });
   };
 
-  const handleCreated = () => {
+  const handleEditClick = product => {
+    setEditingProduct(product);
+  };
+
+  const handleFormSubmit = savedProduct => {
+    setEditingProduct(null);
     loadProducts();
   };
 
@@ -40,9 +43,18 @@ export default function Admin() {
 
   return (
     <div className="admin">
-      <h1>Admin-Bereich: Produkte verwalten</h1>
-      <ProductForm onCreated={handleCreated} />
-      <ProductList products={products} onDelete={handleDelete} />
+      <h1>Admin-Bereich</h1>
+
+      <ProductForm
+        initialProduct={editingProduct}
+        onSubmit={handleFormSubmit}
+      />
+
+      <ProductList
+        products={products}
+        onDelete={handleDelete}
+        onEdit={handleEditClick}
+      />
     </div>
   );
 }
