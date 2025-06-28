@@ -2,11 +2,15 @@ package ch.wiss.onlineshop.model;
 
 import java.math.BigDecimal;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
@@ -40,15 +44,21 @@ public class Product {
     @Column(name = "image_url", length = 255)
     private String imageUrl;
 
+    @ManyToOne(optional = false)  // Jedes Produkt braucht eine Kategorie
+    @JoinColumn(name = "category_id", nullable = false)
+    @JsonIgnoreProperties("products")
+    private Category category;
+
         public Product() {
         // Standardkonstruktor für JPA
     }
 
-    public Product(String name, String description, BigDecimal price, String imageUrl) {
+    public Product(String name, String description, BigDecimal price, String imageUrl, Category category) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.imageUrl = imageUrl;
+        this.category = category;
     }
 
     // Getter & Setter
@@ -66,6 +76,9 @@ public class Product {
 
     public String getImageUrl() { return imageUrl; }
     public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
+
+    public Category getCategory() { return category; }
+    public void setCategory(Category category) { this.category = category; }
 }
 
 // Diese Klasse repräsentiert ein Produkt in der Datenbank.

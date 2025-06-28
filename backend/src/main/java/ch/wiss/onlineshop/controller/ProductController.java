@@ -22,6 +22,12 @@ public class ProductController {
         return productRepository.findAll();
     }
 
+    @GetMapping("/products/{id}")
+    public Product getProductById(@PathVariable Integer id) {
+        return productRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Produkt nicht gefunden mit der ID " + id));
+    }
+
     @PostMapping("/products")
     public Product createProduct(@Valid @RequestBody Product product) {
         return productRepository.save(product);
@@ -32,6 +38,7 @@ public class ProductController {
         productRepository.deleteById(id);
     }
 
+    // Der @RequestBody-Parameter wird verwendet, um die Daten des zu aktualisierenden Produkts zu erhalten.
     @PutMapping("/products/{id}")
     public Product updateProduct(@PathVariable Integer id, @Valid @RequestBody Product productDetails) {
         Product product = productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not found with id " + id));
@@ -39,6 +46,8 @@ public class ProductController {
         product.setDescription(productDetails.getDescription());
         product.setPrice(productDetails.getPrice());
         product.setImageUrl(productDetails.getImageUrl());
+        product.setCategory(productDetails.getCategory());
+        // Hier wird die Kategorie aktualisiert, falls sie sich geändert hat.
         return productRepository.save(product);
     }
 }
