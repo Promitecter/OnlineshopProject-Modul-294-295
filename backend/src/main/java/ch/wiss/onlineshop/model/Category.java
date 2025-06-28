@@ -28,7 +28,6 @@ public class Category {
     // Dies ist nützlich, wenn Produkte gelöscht oder ihre Kategorie geändert wird.
     // Wir nutzen eine ArrayList, um die Produkte zu speichern, da es eine gute Praxis ist, eine konkrete Implementierung zu verwenden, die List-Schnittstelle zu initialisieren.
 
-    // TODO: Wir müssen sicherstellen, dass ein Produkt immer mit einer Kategorie verknüpft ist, bevor es gespeichert wird.
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> products = new ArrayList<>();
 
