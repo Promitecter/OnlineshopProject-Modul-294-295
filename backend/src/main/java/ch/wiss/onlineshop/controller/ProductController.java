@@ -2,6 +2,8 @@ package ch.wiss.onlineshop.controller;
 
 import ch.wiss.onlineshop.model.Product;
 import ch.wiss.onlineshop.repository.ProductRepository;
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +23,7 @@ public class ProductController {
     }
 
     @PostMapping("/products")
-    public Product createProduct(@RequestBody Product product) {
+    public Product createProduct(@Valid @RequestBody Product product) {
         return productRepository.save(product);
     }
 
@@ -31,7 +33,7 @@ public class ProductController {
     }
 
     @PutMapping("/products/{id}")
-    public Product updateProduct(@PathVariable Integer id, @RequestBody Product productDetails) {
+    public Product updateProduct(@PathVariable Integer id, @Valid @RequestBody Product productDetails) {
         Product product = productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not found with id " + id));
         product.setName(productDetails.getName());
         product.setDescription(productDetails.getDescription());
