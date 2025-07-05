@@ -114,16 +114,19 @@ export default function ProductForm({ initialProduct = null, onSubmit }) {
       />
 
       <textarea
-        placeholder="Beschreibung"
+        placeholder="Beschreibung (1-2000 Zeichen)"
         value={description}
         onChange={e => setDescription(e.target.value)}
+        minLength="1"
+        maxLength="2000"
+        required
       />
 
       <input
         type="number"
         step="0.05"
         min="0"
-        placeholder="Preis"
+        placeholder="Preis in CHF inkl. MWST"
         value={price}
         onChange={e => setPrice(e.target.value)}
         required

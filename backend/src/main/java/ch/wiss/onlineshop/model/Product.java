@@ -29,7 +29,7 @@ public class Product {
     private String name;
 
     // TODO: Frontend Validierung hinzufügen (NOT NULL UND MIN MAX)
-    @Size(min = 10, max = 2000, message = "Description must be between 10 and 2000 characters") // Steuert die minimale und maximale Länge der Beschreibung auf Ebene von JPA
+    @Size(min = 1, max = 2000, message = "Description must be between 1 and 2000 characters") // Steuert die minimale und maximale Länge der Beschreibung auf Ebene von JPA
     @Column(columnDefinition = "TEXT") // Hier wird die Spalte "description" in der Datenbank auf TEXT festgelegt, um längere Texte zu ermöglichen.
     private String description;
 

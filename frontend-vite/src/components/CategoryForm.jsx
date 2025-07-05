@@ -49,7 +49,7 @@ export default function CategoryForm({ initialCategory = null, onSubmit }) {
     <form className="category-form" onSubmit={handleSubmit}>
         <h2>{isEdit ? 'Kategorie bearbeiten' : 'Neue Kategorie anlegen'}</h2>
         <input
-            placeholder="Name"
+            placeholder="Kategoriename"
             value={name}
             onChange={e => setName(e.target.value)}
             required
