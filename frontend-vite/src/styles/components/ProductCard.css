@@ -69,3 +69,10 @@
 {
     background-color: #2980b9;
 }
+
+.category-name
+{
+    color: #555;
+    margin: 0.5rem 1rem;
+    font-style: italic;
+}

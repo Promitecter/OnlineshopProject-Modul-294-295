@@ -1,6 +1,8 @@
 package ch.wiss.onlineshop.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +19,7 @@ public class Category {
     // Dies ist eine gängige Praxis, um sicherzustellen, dass Kategorien leicht identifizierbar sind und keine Duplikate entstehen.
     // Wir verwenden hier die Annotation @Column, um die Spaltenattribute in der Datenbank zu definieren.
     // Der Name der Kategorie sollte aussagekräftig sein, z.B. "Elektronik", "Kleidung", "Lebensmittel" usw.
+    @Size(min = 1, max = 50, message = "Name must be between 1 and 50 characters") // Steuert die minimale und maximale Länge des Namens auf Ebene von JPA
     @Column(nullable = false, length = 50, unique = true)
     private String name;
 

@@ -8,3 +8,10 @@
     font-size: 1.75rem;
     margin-bottom: 1rem;
 }
+
+.admin-forms
+{
+    display: flex;
+    align-items: flex-start;
+    gap: 5rem;
+}

@@ -10,6 +10,7 @@ export default function ProductCard({ product, onDelete, onEdit }) {
           className="product-image"
         />
       )}
+      <p className='category-name'>Kategorie: {product.category.name}</p>
       <h2>{product.name}</h2>
       <p>{product.description}</p>
       <p className="product-price">CHF {product.price.toFixed(2)}</p>

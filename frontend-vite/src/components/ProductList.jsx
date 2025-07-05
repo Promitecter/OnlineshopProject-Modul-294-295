@@ -1,7 +1,5 @@
 import '../styles/components/ProductList.css';
 import ProductCard from './ProductCard';
-//import './ProductList.css'; // optional
-// import '../App.css';
 
 export default function ProductList({ products, onDelete, onEdit }) {
   return (

@@ -2,6 +2,8 @@ package ch.wiss.onlineshop.controller;
 
 import ch.wiss.onlineshop.model.Category;
 import ch.wiss.onlineshop.repository.CategoryRepository;
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,12 +29,12 @@ public class CategoryController {
     }
 
     @PostMapping
-    public Category create(@RequestBody Category cat) {
+    public Category create(@Valid @RequestBody Category cat) {
         return categoryRepository.save(cat);
     }
 
     @PutMapping("/{id}")
-    public Category update(@PathVariable Integer id, @RequestBody Category catDetails) {
+    public Category update(@PathVariable Integer id, @Valid @RequestBody Category catDetails) {
         Category cat = categoryRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Kategorie nicht gefunden: " + id));
         cat.setName(catDetails.getName());

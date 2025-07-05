@@ -17,7 +17,7 @@ CREATE TABLE products (
     id          INT AUTO_INCREMENT PRIMARY KEY,
     name        VARCHAR(100) NOT NULL,
     description TEXT,
-    price       DECIMAL(10,2) NOT NULL,
+    price       DECIMAL(10,2) NOT NULL, CHECK (price >= 0 AND MOD(price * 100, 5) = 0), -- price * 100 wandelt 0.05 zu 5 (Rappen) und MOD(...,5) = 0 stellt sicher, dass nur Vielfache von 5 (also 0, 5, 10, 15 … Rappen) erlaubt sind.
     image_url   VARCHAR(255),
     category_id INT NOT NULL,
     CONSTRAINT fk_products_category
@@ -33,7 +33,7 @@ INSERT INTO categories (name) VALUES
   ('Jacken'),
   ('Handschuhe');
 
--- 6) Beispiel-Produkt mit Kategorie-ID
+-- 6) Beispiel-Produkte mit Kategorie-ID
 INSERT INTO products (name, description, price, image_url, category_id)
 VALUES (
   'Motorradhelm ProX',
@@ -41,4 +41,24 @@ VALUES (
   149.90,
   'https://cdn2.louis.de/dynamic/articles/o_resize,w_1800,h_1800,m_limit,c_fff::o_extension,e_webp/cd.35.bd.ARG213946HJCRPHA12Venom24D7.JPG',
   1  -- verweist auf Kategorie 'Helme'
+);
+
+-- 7) Beispiel-Produkt für Jacken
+INSERT INTO products (name, description, price, image_url, category_id)
+VALUES (
+  'Motorradjacke Speedster',
+  'Robuste Lederjacke mit Protektoren für optimale Sicherheit.',
+  249.90,
+  'https://cdn2.louis.de/dynamic/articles/o_resize,w_1800,h_1800,m_limit,c_fff::o_extension,e_webp/cd.35.bd.ARG213946HJCRPHA12Venom24D7.JPG',
+  2  -- verweist auf Kategorie 'Jacken'
+);
+
+-- 8) Beispiel-Produkt für Handschuhe
+INSERT INTO products (name, description, price, image_url, category_id)
+VALUES (
+  'Motorradhandschuhe Comfort',
+  'Bequeme Handschuhe mit Kevlar-Verstärkung.',
+  49.90,
+  'https://cdn2.louis.de/dynamic/articles/o_resize,w_1800,h_1800,m_limit,c_fff::o_extension,e_webp/cd.35.bd.ARG213946HJCRPHA12Venom24D7.JPG',
+  3  -- verweist auf Kategorie 'Handschuhe'
 );
