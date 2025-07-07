@@ -22,13 +22,11 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    // TODO: Frontend Validierung hinzufügen (NUR MIN MAX)
     @Size(min = 1, max = 100, message = "Name must be between 1 and 100 characters") // Steuert die minimale und maximale Länge des Namens auf Ebene von JPA
     @Column(nullable = false, length = 100) // Steuert die maximale Länge der Spalte in der Datenbank
     // Hier wird die Spalte "name" in der Datenbank auf NOT NULL und eine maximale Länge von 100 Zeichen festgelegt.
     private String name;
 
-    // TODO: Frontend Validierung hinzufügen (NOT NULL UND MIN MAX)
     @Size(min = 1, max = 2000, message = "Description must be between 1 and 2000 characters") // Steuert die minimale und maximale Länge der Beschreibung auf Ebene von JPA
     @Column(columnDefinition = "TEXT") // Hier wird die Spalte "description" in der Datenbank auf TEXT festgelegt, um längere Texte zu ermöglichen.
     private String description;
@@ -40,7 +38,6 @@ public class Product {
     @PositiveOrZero(message = "Price must be positive or zero")
     private BigDecimal price;
 
-    // TODO: Standardbild hinterlegen, falls kein Bild angegeben wird.
     @Size(max = 250, message = "Image URL must be less than 250 characters")
     @Column(name = "image_url", length = 255)
     private String imageUrl;
