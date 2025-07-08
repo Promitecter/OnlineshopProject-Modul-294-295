@@ -102,7 +102,7 @@ class ProductControllerTest {
 
     @Test
     void createProductWithMissingNameReturnsBadRequest() throws Exception {
-        // In diesem Test prüfen wir, ob das Erstellen eines Produkts ohne Namen nicht erlaubt ist.
+        // In diesem Test wird geprüft, ob das Erstellen eines Produkts ohne Namen nicht erlaubt ist.
         // Der Name ist ein Pflichtfeld. Fehlt er, soll der Server mit "Bad Request" (400) antworten.
         String json = """
             {
@@ -120,7 +120,7 @@ class ProductControllerTest {
 
     @Test
     void createProductWithNegativePriceReturnsBadRequest() throws Exception {
-        // Hier testen wir, ob ein Produkt mit negativem Preis abgelehnt wird.
+        // Hier wird getestet, ob ein Produkt mit negativem Preis abgelehnt wird.
         // Preise dürfen nicht negativ sein. Der Server soll auch hier "Bad Request" (400) zurückgeben.
         String json = """
             {
@@ -139,7 +139,7 @@ class ProductControllerTest {
 
     @Test
     void createProductWithTooLongNameReturnsBadRequest() throws Exception {
-        // Hier testen wir, ob ein Produkt mit zu langem Namen abgelehnt wird.
+        // Hier wird getestet, ob ein Produkt mit zu langem Namen abgelehnt wird.
         // Der Name darf maximal 100 Zeichen lang sein.
         // Wenn der Name länger ist, soll der Server mit "Bad Request" (400) antworten.
         String longName = "A".repeat(101); // 101 Zeichen
@@ -160,7 +160,7 @@ class ProductControllerTest {
 
     @Test
     void createProductWithTooLongDescriptionReturnsBadRequest() throws Exception {
-        // Hier prüfen wir, ob eine zu lange Beschreibung abgelehnt wird.
+        // Hier wird geprüft, ob eine zu lange Beschreibung abgelehnt wird.
         // Angenommen, die Beschreibung darf maximal 2000 Zeichen lang sein.
         String longDesc = "B".repeat(2001); // 2001 Zeichen
         String json = """
