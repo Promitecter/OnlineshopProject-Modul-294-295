@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS categories;
 -- 3) Tabelle für Kategorien
 CREATE TABLE categories (
     id   INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50) NOT NULL UNIQUE -- heisst, dass die Klasse einen Namen haben MUSS und der Name nicht mehrmals vorkommen darf, sprich einzigartig ist.
+    name VARCHAR(50) NOT NULL UNIQUE -- heisst, dass die Klasse (Kategorie) einen Namen haben MUSS und der Name nicht mehrmals vorkommen darf, sprich einzigartig ist.
 );
 
 -- 4) Produkte-Tabelle mit Fremdschlüssel auf categories.id

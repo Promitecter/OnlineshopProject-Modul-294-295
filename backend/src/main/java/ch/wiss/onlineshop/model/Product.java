@@ -12,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 
@@ -22,11 +23,14 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotEmpty(message = "Name must not be empty") // Steuert die Validierung des Namens auf Ebene von JPA
     @Size(min = 1, max = 100, message = "Name must be between 1 and 100 characters") // Steuert die minimale und maximale Länge des Namens auf Ebene von JPA
     @Column(nullable = false, length = 100) // Steuert die maximale Länge der Spalte in der Datenbank
     // Hier wird die Spalte "name" in der Datenbank auf NOT NULL und eine maximale Länge von 100 Zeichen festgelegt.
     private String name;
 
+    @NotEmpty(message = "Description must not be empty") // Steuert die Validierung der Beschreibung auf Ebene von JPA
+    // Die Beschreibung ist ein Pflichtfeld (nullable = false) und kann bis zu 2000 Zeichen lang sein.
     @Size(min = 1, max = 2000, message = "Description must be between 1 and 2000 characters") // Steuert die minimale und maximale Länge der Beschreibung auf Ebene von JPA
     @Column(columnDefinition = "TEXT") // Hier wird die Spalte "description" in der Datenbank auf TEXT festgelegt, um längere Texte zu ermöglichen.
     private String description;

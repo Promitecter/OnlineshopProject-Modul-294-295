@@ -45,7 +45,9 @@ class ProductControllerTest {
 
     @Test
     void getAllProductsReturnsList() throws Exception {
-        // Arrange: Stube ein Category- und Product-Objekt
+        // In diesem Test prüfen wir, ob der Server eine Liste mit Produkten zurückgibt,
+        // wenn wir alle Produkte abfragen. Wir erwarten, dass das Produkt mit den
+        // richtigen Werten im JSON enthalten ist.
         Category cat = new Category("Helme");
         cat.setId(1);
         Product prod = new Product("Testhelm", "Beschreibung", BigDecimal.valueOf(99.90), "url", cat);
@@ -53,8 +55,8 @@ class ProductControllerTest {
 
         when(productRepository.findAll()).thenReturn(List.of(prod));
 
-        // Act & Assert
-        // Hier wird die GET-Anfrage an den Endpoint "/api/products" gesendet. Die URL fehlt absichtlich, da oben nur verglichen wird, was wir reingeben.
+        // Wir senden eine GET-Anfrage an /api/products und prüfen,
+        // ob das Ergebnis wie erwartet aussieht.
         mvc.perform(get("/api/products"))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$[0].id").value(42))
@@ -65,14 +67,15 @@ class ProductControllerTest {
 
     @Test
     void updateProductReturnsUpdatedProduct() throws Exception {
-        // Arrange: existierendes Produkt stubben
+        // Hier testen wir, ob ein bestehendes Produkt erfolgreich aktualisiert werden kann.
+        // Wir simulieren, dass das Produkt mit der ID 7 schon existiert.
         Category cat = new Category("Helme");
         cat.setId(1);
         Product existing = new Product("Altname", "Alte Beschreibung", BigDecimal.valueOf(50.00), "oldUrl", cat);
         existing.setId(7);
 
         when(productRepository.findById(7)).thenReturn(Optional.of(existing));
-        // save(...) soll einfach das übergebene Objekt zurückgeben
+        // Das Repository gibt beim Speichern einfach das übergebene Produkt zurück.
         when(productRepository.save(any(Product.class))).thenAnswer(inv -> inv.getArgument(0));
 
         String updateJson = """
@@ -85,7 +88,8 @@ class ProductControllerTest {
             }
         """;
 
-        // Act & Assert
+        // Wir senden eine PUT-Anfrage, um das Produkt zu aktualisieren,
+        // und prüfen, ob die Rückgabe die neuen Werte enthält.
         mvc.perform(put("/api/products/7")
                 .contentType(APPLICATION_JSON)
                 .content(updateJson))
@@ -95,4 +99,83 @@ class ProductControllerTest {
             .andExpect(jsonPath("$.price").value(75.00))
             .andExpect(jsonPath("$.imageUrl").value("newUrl"));
     }
+
+    @Test
+    void createProductWithMissingNameReturnsBadRequest() throws Exception {
+        // In diesem Test prüfen wir, ob das Erstellen eines Produkts ohne Namen nicht erlaubt ist.
+        // Der Name ist ein Pflichtfeld. Fehlt er, soll der Server mit "Bad Request" (400) antworten.
+        String json = """
+            {
+                "description": "Beschreibung",
+                "price": 10.00,
+                "imageUrl": "url",
+                "category": { "id": 1 }
+            }
+        """;
+        mvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post("/api/products")
+                .contentType(APPLICATION_JSON)
+                .content(json))
+            .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void createProductWithNegativePriceReturnsBadRequest() throws Exception {
+        // Hier testen wir, ob ein Produkt mit negativem Preis abgelehnt wird.
+        // Preise dürfen nicht negativ sein. Der Server soll auch hier "Bad Request" (400) zurückgeben.
+        String json = """
+            {
+                "name": "Testprodukt",
+                "description": "Beschreibung",
+                "price": -5.00,
+                "imageUrl": "url",
+                "category": { "id": 1 }
+            }
+        """;
+        mvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post("/api/products")
+                .contentType(APPLICATION_JSON)
+                .content(json))
+            .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void createProductWithTooLongNameReturnsBadRequest() throws Exception {
+        // Hier testen wir, ob ein Produkt mit zu langem Namen abgelehnt wird.
+        // Der Name darf maximal 100 Zeichen lang sein.
+        // Wenn der Name länger ist, soll der Server mit "Bad Request" (400) antworten.
+        String longName = "A".repeat(101); // 101 Zeichen
+        String json = """
+            {
+                "name": "%s",
+                "description": "Beschreibung",
+                "price": 10.00,
+                "imageUrl": "url",
+                "category": { "id": 1 }
+            }
+        """.formatted(longName);
+        mvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post("/api/products")
+                .contentType(APPLICATION_JSON)
+                .content(json))
+            .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void createProductWithTooLongDescriptionReturnsBadRequest() throws Exception {
+        // Hier prüfen wir, ob eine zu lange Beschreibung abgelehnt wird.
+        // Angenommen, die Beschreibung darf maximal 2000 Zeichen lang sein.
+        String longDesc = "B".repeat(2001); // 2001 Zeichen
+        String json = """
+            {
+                "name": "Testprodukt",
+                "description": "%s",
+                "price": 10.00,
+                "imageUrl": "url",
+                "category": { "id": 1 }
+            }
+        """.formatted(longDesc);
+        mvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post("/api/products")
+                .contentType(APPLICATION_JSON)
+                .content(json))
+            .andExpect(status().isBadRequest());
+    }
+
 }
