@@ -13,10 +13,11 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-
+// Diese Klasse ist ein globaler Exception-Handler für den Controller.
 @ControllerAdvice
 public class ControllerAdvisor extends ResponseEntityExceptionHandler {
-
+	// Diese Methode behandelt fehlende Request-Parameter und gibt eine benutzerdefinierte Fehlermeldung zurück.
+	// Sie wird aufgerufen, wenn ein erforderlicher Parameter in der Anfrage fehlt.
     @Override
 	protected ResponseEntity<Object> handleMissingServletRequestParameter(MissingServletRequestParameterException ex,
 			HttpHeaders headers, HttpStatusCode status, WebRequest request) {
@@ -25,7 +26,8 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
 
 		return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
 	}
-
+	// Diese Methode behandelt ungültige Argumente in der Anfrage, die durch @Valid annotierte Parameter betreffen.
+	// Sie wird aufgerufen, wenn die Validierung eines Arguments fehlschlägt.
     @Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatusCode status, WebRequest request) {

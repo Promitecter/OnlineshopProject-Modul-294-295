@@ -46,6 +46,8 @@ public class Product {
     @Column(name = "image_url", length = 255)
     private String imageUrl;
 
+    // @ManyToOne bedeutet, dass jedes Produkt zu genau einer Kategorie gehört. optional = false bedeutet, dass jedes Produkt eine Kategorie haben muss.
+    // @JoinColumn gibt an, dass die Spalte "category_id" in der Tabelle "products" die Beziehung zur Kategorie darstellt.
     @ManyToOne(optional = false)  // Jedes Produkt braucht eine Kategorie
     @JoinColumn(name = "category_id", nullable = false)
     @JsonIgnoreProperties("products") // Verhindert, dass die Produkte in der Kategorie geladen werden, wenn die Kategorie geladen wird. Bei der Ausgabe der Produkte wird die Kategorie jedoch mitgeladen. (!ENDLESS LOOP)

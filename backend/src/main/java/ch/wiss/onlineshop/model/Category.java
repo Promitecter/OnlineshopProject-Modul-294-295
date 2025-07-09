@@ -28,12 +28,12 @@ public class Category {
     // Eine Kategorie kann mehrere Produkte haben, aber ein Produkt gehört zu genau einer Kategorie.
     // Daher verwenden wir hier eine OneToMany-Beziehung.
     // Das mappedBy-Attribut gibt an, dass die Beziehung in der Product-Klasse definiert ist.
-    // CascadeType.ALL bedeutet, dass alle Operationen (Persist, Merge, Remove, Refresh, Detach) auf die Produkte auch auf die Kategorie angewendet werden.
-    // orphanRemoval = true bedeutet, dass Produkte, die nicht mehr zu dieser Kategorie gehören, automatisch aus der Datenbank entfernt werden.
+    // Die Cascade-Typen PERSIST und MERGE bedeuten, dass Änderungen an der Kategorie auch auf die zugehörigen Produkte angewendet werden.
+    // Das bedeutet, wenn eine Kategorie gespeichert oder aktualisiert wird, werden auch die zugehörigen Produkte gespeichert oder aktualisiert.
     // Dies ist nützlich, wenn Produkte gelöscht oder ihre Kategorie geändert wird.
     // Wir nutzen eine ArrayList, um die Produkte zu speichern, da es eine gute Praxis ist, eine konkrete Implementierung zu verwenden, die List-Schnittstelle zu initialisieren.
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "category", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Product> products = new ArrayList<>();
 
     // Standardkonstruktor für JPA
