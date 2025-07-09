@@ -45,3 +45,9 @@
     width: 100%;
     box-sizing: border-box;
 }
+
+.category-form-container
+{
+    display: flex;
+    flex-direction: column;
+}

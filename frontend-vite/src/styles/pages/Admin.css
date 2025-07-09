@@ -15,3 +15,11 @@
     align-items: flex-start;
     gap: 5rem;
 }
+
+@media (max-width: 768px)
+{
+    .admin-forms
+    {
+        flex-wrap: wrap;
+    }
+}

@@ -33,7 +33,7 @@ export default function Frontpage() {
 
   return (
     <div className="frontpage">
-      <h1>Willkommen im Onlineshop</h1>
+      <h1>Unsere Produkte direkt vom Bauernhof</h1>
       <ProductList
         products={products}
         categories={categories}

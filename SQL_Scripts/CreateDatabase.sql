@@ -29,36 +29,60 @@ CREATE TABLE products (
 
 -- 5) Beispiel-Daten für Kategorien
 INSERT INTO categories (name) VALUES
-  ('Helme'),
-  ('Jacken'),
-  ('Handschuhe');
+  ('Gemüse'),
+  ('Fleisch'),
+  ('Früchte'),
+  ('Brot'),
+  ('Eier');
 
--- 6) Beispiel-Produkte mit Kategorie-ID
 INSERT INTO products (name, description, price, image_url, category_id)
-VALUES (
-  'Motorradhelm ProX',
-  'Leichter Helm mit guter Belüftung und ECE-Zertifizierung.',
-  149.90,
-  'https://cdn2.louis.de/dynamic/articles/o_resize,w_1800,h_1800,m_limit,c_fff::o_extension,e_webp/cd.35.bd.ARG213946HJCRPHA12Venom24D7.JPG',
-  1  -- verweist auf Kategorie 'Helme'
-);
+VALUES
+  -- 6 Produkte für Kategorie 1: Gemüse
+  ('Gemüse Produkt 1', 'Beschreibung für Gemüse Produkt 1', 9.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 1),
+  ('Gemüse Produkt 2', 'Beschreibung für Gemüse Produkt 2', 9.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 1),
+  ('Gemüse Produkt 3', 'Beschreibung für Gemüse Produkt 3', 9.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 1),
+  ('Gemüse Produkt 4', 'Beschreibung für Gemüse Produkt 4', 9.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 1),
+  ('Gemüse Produkt 5', 'Beschreibung für Gemüse Produkt 5', 9.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 1),
+  ('Gemüse Produkt 6', 'Beschreibung für Gemüse Produkt 6', 9.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 1),
+  ('Gemüse Produkt 7', 'Beschreibung für Gemüse Produkt 7', 9.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 1),
+  ('Gemüse Produkt 8', 'Beschreibung für Gemüse Produkt 8', 9.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 1),
 
--- 7) Beispiel-Produkt für Jacken
-INSERT INTO products (name, description, price, image_url, category_id)
-VALUES (
-  'Motorradjacke Speedster',
-  'Robuste Lederjacke mit Protektoren für optimale Sicherheit.',
-  249.90,
-  'https://cdn2.louis.de/dynamic/articles/o_resize,w_1800,h_1800,m_limit,c_fff::o_extension,e_webp/cd.35.bd.ARG213946HJCRPHA12Venom24D7.JPG',
-  2  -- verweist auf Kategorie 'Jacken'
-);
+  -- 6 Produkte für Kategorie 2: Fleisch
+  ('Fleisch Produkt 1', 'Beschreibung für Fleisch Produkt 1', 19.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 2),
+  ('Fleisch Produkt 2', 'Beschreibung für Fleisch Produkt 2', 19.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 2),
+  ('Fleisch Produkt 3', 'Beschreibung für Fleisch Produkt 3', 19.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 2),
+  ('Fleisch Produkt 4', 'Beschreibung für Fleisch Produkt 4', 19.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 2),
+  ('Fleisch Produkt 5', 'Beschreibung für Fleisch Produkt 5', 19.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 2),
+  ('Fleisch Produkt 6', 'Beschreibung für Fleisch Produkt 6', 19.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 2),
+  ('Fleisch Produkt 7', 'Beschreibung für Fleisch Produkt 7', 19.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 2),
+  ('Fleisch Produkt 8', 'Beschreibung für Fleisch Produkt 8', 19.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 2),
 
--- 8) Beispiel-Produkt für Handschuhe
-INSERT INTO products (name, description, price, image_url, category_id)
-VALUES (
-  'Motorradhandschuhe Comfort',
-  'Bequeme Handschuhe mit Kevlar-Verstärkung.',
-  49.90,
-  'https://cdn2.louis.de/dynamic/articles/o_resize,w_1800,h_1800,m_limit,c_fff::o_extension,e_webp/cd.35.bd.ARG213946HJCRPHA12Venom24D7.JPG',
-  3  -- verweist auf Kategorie 'Handschuhe'
-);
+  -- 6 Produkte für Kategorie 3: Früchte
+  ('Früchte Produkt 1', 'Beschreibung für Früchte Produkt 1', 14.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 3),
+  ('Früchte Produkt 2', 'Beschreibung für Früchte Produkt 2', 14.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 3),
+  ('Früchte Produkt 3', 'Beschreibung für Früchte Produkt 3', 14.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 3),
+  ('Früchte Produkt 4', 'Beschreibung für Früchte Produkt 4', 14.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 3),
+  ('Früchte Produkt 5', 'Beschreibung für Früchte Produkt 5', 14.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 3),
+  ('Früchte Produkt 6', 'Beschreibung für Früchte Produkt 6', 14.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 3),
+  ('Früchte Produkt 7', 'Beschreibung für Früchte Produkt 7', 14.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 3),
+  ('Früchte Produkt 8', 'Beschreibung für Früchte Produkt 8', 14.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 3),
+
+  -- 6 Produkte für Kategorie 4: Brot
+  ('Brot Produkt 1', 'Beschreibung für Brot Produkt 1', 4.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 4),
+  ('Brot Produkt 2', 'Beschreibung für Brot Produkt 2', 4.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 4),
+  ('Brot Produkt 3', 'Beschreibung für Brot Produkt 3', 4.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 4),
+  ('Brot Produkt 4', 'Beschreibung für Brot Produkt 4', 4.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 4),
+  ('Brot Produkt 5', 'Beschreibung für Brot Produkt 5', 4.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 4),
+  ('Brot Produkt 6', 'Beschreibung für Brot Produkt 6', 4.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 4),
+  ('Brot Produkt 7', 'Beschreibung für Brot Produkt 7', 4.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 4),
+  ('Brot Produkt 8', 'Beschreibung für Brot Produkt 8', 4.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 4),
+
+  -- 6 Produkte für Kategorie 5: Eier
+  ('Eier Produkt 1', 'Beschreibung für Eier Produkt 1', 3.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 5),
+  ('Eier Produkt 2', 'Beschreibung für Eier Produkt 2', 3.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 5),
+  ('Eier Produkt 3', 'Beschreibung für Eier Produkt 3', 3.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 5),
+  ('Eier Produkt 4', 'Beschreibung für Eier Produkt 4', 3.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 5),
+  ('Eier Produkt 5', 'Beschreibung für Eier Produkt 5', 3.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 5),
+  ('Eier Produkt 6', 'Beschreibung für Eier Produkt 6', 3.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 5),
+  ('Eier Produkt 7', 'Beschreibung für Eier Produkt 7', 3.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 5),
+  ('Eier Produkt 8', 'Beschreibung für Eier Produkt 8', 3.90, 'https://onlineshopfactory.ch/wp-content/uploads/2023/11/Onlineshopfactory-Icons.png', 5);
