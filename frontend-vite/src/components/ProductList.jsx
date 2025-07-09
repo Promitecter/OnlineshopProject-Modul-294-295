@@ -4,7 +4,7 @@ import ProductCard from './ProductCard';
 
 export default function ProductList({
   products,
-  categories,  // neu
+  categories,
   onDelete,
   onEdit
 }) {

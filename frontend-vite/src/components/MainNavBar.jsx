@@ -1,6 +1,9 @@
 import '../styles/components/MainNavBar.css';
 import { NavLink } from 'react-router-dom';
 
+/* Hier wird die Hauptnavigation der Anwendung definiert. Wir müssen den NavLink nehmen,
+um die Navigation zwischen den Seiten zu ermöglichen. mit isActive sagen wir, welche Seite gerade aktiv ist.
+Das kann dann im CSS angesteuert werden um die aktive Seite hervorzuheben. */
 export default function MainNavBar() {
   return (
     <nav className="main-navbar">
@@ -8,6 +11,8 @@ export default function MainNavBar() {
         <li>
           <NavLink
             to="/"
+            /* Das end-Attribut sorgt dafür, dass der Link nur aktiv ist, wenn er exakt mit der URL übereinstimmt. */
+            end
             className={({ isActive }) =>
             isActive ? 'nav-link active' : 'nav-link'
             }

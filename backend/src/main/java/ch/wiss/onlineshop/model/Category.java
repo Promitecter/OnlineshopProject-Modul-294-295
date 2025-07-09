@@ -7,10 +7,17 @@ import jakarta.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
+// Diese Klasse repräsentiert eine Kategorie in unserem Onlineshop.
+// Eine Kategorie kann mehrere Produkte enthalten, aber ein Produkt gehört zu genau einer Kategorie.
+// Die Klasse ist mit JPA-Anmerkungen versehen, um sie als Entität in der Datenbank zu speichern.
+// Die Klasse verwendet auch Validierungsanmerkungen, um sicherzustellen, dass die Eingaben der Benutzer korrekt sind.
+
 @Entity
 @Table(name = "categories")
 public class Category {
-
+    // Die ID der Kategorie ist der Primärschlüssel der Entität.
+    // Sie wird automatisch generiert, wenn eine neue Kategorie erstellt wird.
+    // @GeneratedValue(strategy = GenerationType.IDENTITY) bedeutet, dass die ID von der Datenbank generiert wird.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -36,10 +43,14 @@ public class Category {
     @OneToMany(mappedBy = "category", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Product> products = new ArrayList<>();
 
-    // Standardkonstruktor für JPA
-    // Dieser Konstruktor wird benötigt, damit JPA Objekte dieser Klasse instanziieren kann
+    // Standardkonstruktor für JPA (Java Persistence API (siehe Imports)).
+    // Dieser Konstruktor wird benötigt, damit JPA Objekte dieser Klasse instanziieren kann.
+    // JPA ist genauer gesagt ein JAVA Import für die Verwaltung von Datenbankentitäten.
     public Category() {}
 
+    // Konstruktor, der den Namen der Kategorie als Parameter akzeptiert.
+    // Dieser Konstruktor wird verwendet, um eine neue Kategorie zu erstellen, wenn der Name bekannt ist.
+    // Wir brauchen diesen Konstruktor nicht zwingend, aber es ist eine gute Praxis, um die Lesbarkeit des Codes zu verbessern.
     public Category(String name) {
         this.name = name;
     }

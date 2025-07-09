@@ -6,6 +6,8 @@ import Admin      from './sites/Admin';
 import About      from './sites/About';
 import Contact    from './sites/Contact';
 
+/* Haupt-App-Komponente, dient als zentraler Ort für die Navigation und das Routing.
+Der Footer wird hier ebenfalls eingebunden, aber nicht im main-content, da er nicht im Hauptcontainer sein soll. */
 export default function App() {
   return (
     <>

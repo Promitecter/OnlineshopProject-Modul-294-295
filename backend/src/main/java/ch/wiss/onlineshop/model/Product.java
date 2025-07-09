@@ -53,9 +53,7 @@ public class Product {
     @JsonIgnoreProperties("products") // Verhindert, dass die Produkte in der Kategorie geladen werden, wenn die Kategorie geladen wird. Bei der Ausgabe der Produkte wird die Kategorie jedoch mitgeladen. (!ENDLESS LOOP)
     private Category category;
 
-        public Product() {
-        // Standardkonstruktor für JPA
-    }
+    public Product() {}
 
     // Konstruktor für die Erstellung eines neuen Produkts
     public Product(String name, String description, BigDecimal price, String imageUrl, Category category) {

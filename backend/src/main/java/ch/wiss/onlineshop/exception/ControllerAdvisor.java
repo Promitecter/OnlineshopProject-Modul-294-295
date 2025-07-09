@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-// Diese Klasse ist ein globaler Exception-Handler für den Controller.
+// Diese Klasse ist ein globaler Exception-Handler für den Controller. Diese Klasse ist notwendig,
+// da wir die @Valid Annotation verwenden, um die Eingaben der Benutzer zu validieren.
 @ControllerAdvice
 public class ControllerAdvisor extends ResponseEntityExceptionHandler {
 	// Diese Methode behandelt fehlende Request-Parameter und gibt eine benutzerdefinierte Fehlermeldung zurück.
