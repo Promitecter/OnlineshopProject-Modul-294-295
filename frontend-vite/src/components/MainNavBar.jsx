@@ -1,5 +1,5 @@
-import '../styles/components/MainNavBar.css';
-import { NavLink } from 'react-router-dom';
+import "../styles/components/MainNavBar.css";
+import { NavLink } from "react-router-dom";
 
 /* Hier wird die Hauptnavigation der Anwendung definiert. Wir müssen den NavLink nehmen,
 um die Navigation zwischen den Seiten zu ermöglichen. mit isActive sagen wir, welche Seite gerade aktiv ist.
@@ -14,7 +14,7 @@ export default function MainNavBar() {
             /* Das end-Attribut sorgt dafür, dass der Link nur aktiv ist, wenn er exakt mit der URL übereinstimmt. */
             end
             className={({ isActive }) =>
-            isActive ? 'nav-link active' : 'nav-link'
+              isActive ? "nav-link active" : "nav-link"
             }
           >
             Startseite
@@ -24,7 +24,7 @@ export default function MainNavBar() {
           <NavLink
             to="/admin"
             className={({ isActive }) =>
-            isActive ? 'nav-link active' : 'nav-link'
+              isActive ? "nav-link active" : "nav-link"
             }
           >
             Admin
@@ -34,7 +34,7 @@ export default function MainNavBar() {
           <NavLink
             to="/about"
             className={({ isActive }) =>
-            isActive ? 'nav-link active' : 'nav-link'
+              isActive ? "nav-link active" : "nav-link"
             }
           >
             Über uns
@@ -44,7 +44,7 @@ export default function MainNavBar() {
           <NavLink
             to="/contact"
             className={({ isActive }) =>
-            isActive ? 'nav-link active' : 'nav-link'
+              isActive ? "nav-link active" : "nav-link"
             }
           >
             Kontakt

@@ -1,4 +1,4 @@
-import '../styles/components/ProductCard.css';
+import "../styles/components/ProductCard.css";
 
 export default function ProductCard({ product, onDelete, onEdit }) {
   return (
@@ -10,21 +10,18 @@ export default function ProductCard({ product, onDelete, onEdit }) {
           className="product-image"
         />
       )}
-      <p className='category-name'>Kategorie: {product.category.name}</p>
+      <p className="category-name">Kategorie: {product.category.name}</p>
       <h2>{product.name}</h2>
       <p>{product.description}</p>
-      <p className="product-price">CHF {product.price.toFixed(2)}</p> {/* toFixed(2) sorgt dafür, dass immer zwei Nachkommastellen angezeigt werden. */}
-
+      <p className="product-price">CHF {product.price.toFixed(2)}</p>{" "}
+      {/* toFixed(2) sorgt dafür, dass immer zwei Nachkommastellen angezeigt werden. */}
       <div className="card-actions">
-        {typeof onEdit === 'function' && (
-          <button
-            className="edit-button"
-            onClick={() => onEdit(product)}
-          >
+        {typeof onEdit === "function" && (
+          <button className="edit-button" onClick={() => onEdit(product)}>
             Bearbeiten
           </button>
         )}
-        {typeof onDelete === 'function' && (
+        {typeof onDelete === "function" && (
           <button
             className="delete-button"
             onClick={() => onDelete(product.id)}

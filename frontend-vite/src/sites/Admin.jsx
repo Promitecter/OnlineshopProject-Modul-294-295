@@ -1,12 +1,12 @@
-import '../styles/pages/Admin.css';
-import { useEffect, useState } from 'react';
-import ProductList from '../components/ProductList';
-import ProductForm from '../components/ProductForm';
-import CategoryForm from '../components/CategoryForm';
-import CategoryList from '../components/CategoryList';
+import "../styles/pages/Admin.css";
+import { useEffect, useState } from "react";
+import ProductList from "../components/ProductList";
+import ProductForm from "../components/ProductForm";
+import CategoryForm from "../components/CategoryForm";
+import CategoryList from "../components/CategoryList";
 
 export default function Admin() {
-  const [loading, setLoading]   = useState(true);
+  const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [editingProduct, setEditingProduct] = useState(null);
   const [categories, setCategories] = useState([]);
@@ -14,9 +14,9 @@ export default function Admin() {
 
   const loadProducts = () => {
     setLoading(true);
-    fetch('http://localhost:8080/api/products')
-      .then(r => r.json())
-      .then(data => {
+    fetch("http://localhost:8080/api/products")
+      .then((r) => r.json())
+      .then((data) => {
         setProducts(data);
         setLoading(false);
       });
@@ -24,9 +24,9 @@ export default function Admin() {
 
   const loadCategories = () => {
     setLoading(true);
-    fetch('http://localhost:8080/api/categories')
-      .then(r => r.json())
-      .then(data => {
+    fetch("http://localhost:8080/api/categories")
+      .then((r) => r.json())
+      .then((data) => {
         setCategories(data);
         setLoading(false);
       });
@@ -37,40 +37,45 @@ export default function Admin() {
     loadCategories();
   }, []);
 
-const handleDeleteProduct = id => {
-    fetch(`http://localhost:8080/api/products/${id}`, { method: 'DELETE' })
-      .then(() => {
-        setEditingProduct(null);
-        loadProducts();
+  const handleDeleteProduct = (id) => {
+    fetch(`http://localhost:8080/api/products/${id}`, {
+      method: "DELETE",
+    }).then(() => {
+      setEditingProduct(null);
+      loadProducts();
+    });
+  };
+
+  const handleDeleteCategory = (id) => {
+    // 1) Prüfen, ob irgendein Produkt diese Kategorie nutzt
+    const alreadyExisting = products.some((p) => p.category?.id === id);
+    if (alreadyExisting) {
+      alert(
+        "ACHTUNG, diese Kategorie enthält Produkte! Bitte entferne diese Produkte zuerst, bevor du die Kategorie löschst."
+      );
+      return;
+    }
+
+    // 2) Sonst löschen und Liste neu laden
+    fetch(`http://localhost:8080/api/categories/${id}`, { method: "DELETE" })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((err) => {
+            throw new Error(err.error || "Delete failed");
+          });
+        }
+        // Editing-Form schließen, falls du gerade editierst
+        setEditingCategory(null);
+        // Kategorien neu laden
+        loadCategories();
+      })
+      .catch((err) => {
+        console.error("Fehler beim Löschen:", err);
+        alert("Fehler beim Löschen der Kategorie: " + err.message);
       });
   };
 
-const handleDeleteCategory = id => {
-  // 1) Prüfen, ob irgendein Produkt diese Kategorie nutzt
-  const alreadyExisting = products.some(p => p.category?.id === id);
-  if (alreadyExisting) {
-    alert('ACHTUNG, diese Kategorie enthält Produkte! Bitte entferne diese Produkte zuerst, bevor du die Kategorie löschst.',);
-    return;
-  }
-
-  // 2) Sonst löschen und Liste neu laden
-  fetch(`http://localhost:8080/api/categories/${id}`, { method: 'DELETE' })
-    .then(res => {
-      if (!res.ok) {
-        return res.json().then(err => { throw new Error(err.error || 'Delete failed'); });
-      }
-      // Editing-Form schließen, falls du gerade editierst
-      setEditingCategory(null);
-      // Kategorien neu laden
-      loadCategories();
-    })
-    .catch(err => {
-      console.error('Fehler beim Löschen:', err);
-      alert('Fehler beim Löschen der Kategorie: ' + err.message);
-    });
-};
-
-  const handleEditClick = product => {
+  const handleEditClick = (product) => {
     setEditingProduct(product);
   };
 
@@ -86,23 +91,23 @@ const handleDeleteCategory = id => {
   return (
     <div className="admin">
       <h1>Admin-Bereich</h1>
-        <div className="admin-forms">
-          <ProductForm
-            initialProduct={editingProduct}
+      <div className="admin-forms">
+        <ProductForm
+          initialProduct={editingProduct}
+          onSubmit={handleFormSubmit}
+        />
+        <div className="category-form-container">
+          <CategoryForm
+            initialCategory={editingCategory}
             onSubmit={handleFormSubmit}
           />
-          <div className='category-form-container'>
-            <CategoryForm
-              initialCategory={editingCategory}
-              onSubmit={handleFormSubmit}
-            />
-            <CategoryList
-              categories={categories}
-              onDelete={handleDeleteCategory}
-              onEdit={category => setEditingCategory(category)}
+          <CategoryList
+            categories={categories}
+            onDelete={handleDeleteCategory}
+            onEdit={(category) => setEditingCategory(category)}
           />
-          </div>
         </div>
+      </div>
       <ProductList
         products={products}
         categories={categories}

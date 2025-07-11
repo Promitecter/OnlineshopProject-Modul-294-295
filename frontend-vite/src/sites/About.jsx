@@ -1,5 +1,5 @@
 // import '../App.css';
-import '../styles/pages/About.css';
+import "../styles/pages/About.css";
 
 export default function About() {
   return (
