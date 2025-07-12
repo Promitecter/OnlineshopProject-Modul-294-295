@@ -12,7 +12,7 @@ export default function CategoryCard({ category, onDelete, onEdit }) {
           <button className="edit-button" onClick={() => onEdit(category)}>
             Bearbeiten
           </button>
-        )}
+        )} {/* Die Schaltfläche zum Löschen der Kategorie, die nur angezeigt wird, wenn onDelete eine Funktion ist */}
         {typeof onDelete === "function" && (
           <button
             className="delete-button"

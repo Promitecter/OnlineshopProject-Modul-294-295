@@ -15,7 +15,7 @@ Sie ermöglicht das Abrufen, Erstellen, Aktualisieren und Löschen von Kategorie
 @CrossOrigin ermöglicht Cross-Origin Resource Sharing (CORS) für die angegebenen Ursprünge, hier für http://localhost:5173.
 CORS ist eine Sicherheitsfunktion, die es Webanwendungen ermöglicht, Ressourcen von anderen Ursprüngen (Domains)
 zu laden.
-In diesem Fall erlaubt es, dass die Frontend-Anwendung (z.B. eine React-App) auf die Backend-API zugreifen kann,
+In diesem Fall erlaubt es, dass die Frontend-Anwendung auf die Backend-API zugreifen kann,
 die auf einem anderen Port läuft. Aber eine andere Applikation kann nicht auf die API zugreifen,
 wenn sie nicht in der Liste der erlaubten Ursprünge steht.
 Dies ist nützlich, wenn die Frontend-Anwendung auf einem anderen Port läuft als die Backend-Anwendung.*/
