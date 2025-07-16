@@ -16,7 +16,7 @@ CREATE TABLE categories (
 CREATE TABLE products (
     id          INT AUTO_INCREMENT PRIMARY KEY,
     name        VARCHAR(100) NOT NULL,
-    description TEXT,
+    description TEXT NOT NULL,
     price       DECIMAL(10,2) NOT NULL, CHECK (price >= 0 AND MOD(price * 100, 5) = 0), -- price * 100 wandelt 0.05 zu 5 (Rappen) und MOD(...,5) = 0 stellt sicher, dass nur Vielfache von 5 (also 0, 5, 10, 15 … Rappen) erlaubt sind.
     image_url   VARCHAR(255),
     category_id INT NOT NULL,
