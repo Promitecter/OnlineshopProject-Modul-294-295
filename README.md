@@ -3,7 +3,7 @@ In diesem Repository befindet sich die Abgabe für die Projektarbeit in den Modu
 
 ---
 
-# Installationsanleitung für das Onlineshop-Projekt
+# Installationsanleitung
 
 Diese Anleitung beschreibt, wie du das Onlineshop-Projekt aus dem Git-Repository klonst und auf deiner lokalen Entwicklungsumgebung startest.
 
