@@ -14,7 +14,7 @@ Diese Anleitung beschreibt, wie du das Onlineshop-Projekt aus dem Git-Repository
 - **IDE** (am besten VSCode oder Codium)
 - **MySQL Workbench**
 
-Um Java, Maven, Node.js und Git zu installieren, empfiehlt es sich, den Chocolatey Package Manager zu nutzen. 
+Um Java, Maven, Node.js und Git zu installieren, empfiehlt es sich, den Chocolatey Package Manager zu nutzen.
 
 Weitere Details findest du unter: https://chocolatey.org/
 
@@ -23,15 +23,19 @@ Nach der Installation über Chocolatey, kannst du mit folgenden Befehlen im Wind
 ```bash
 java --version
 ```
+
 ```bash
 mvn -v
 ```
+
 ```bash
 node -v
 ```
+
 ```bash
 npm -v
 ```
+
 ```bash
 git --version
 ```
@@ -43,9 +47,10 @@ git --version
 Öffne ein Terminal und führe folgenden Befehl aus:
 
 ```bash
-git clone <REPO-URL>
+git clone https://github.com/Promitecter/OnlineshopProject-Modul-294-295.git
 cd OnlineshopProject
 ```
+
 - **Alternativ kannst du das Repo auch direkt über die IDE klonen. Das ist gerade bei der Verwendung von VSCode oder Codium deutlich einfacher.**
 
 ---
@@ -68,7 +73,7 @@ Wenn der Code erfolgreich war, hast du jetzt die notwendige Datenbank in deiner 
 ## 3. Backend konfigurieren und starten
 
 1. Gehe in den Ordner:
-"\OnlineshopProject\backend\src\main\resources\templates" und bearbeite die application.properties Datei.
+   "\OnlineshopProject\backend\src\main\resources\templates" und bearbeite die application.properties Datei.
 
 - In dieser Datei fügst du deine Zugangsdaten der soeben erstellten MySQL Connection ein. Achte darauf, dass die Localhost Adresse mit der angezeigten Adresse in der MySQL Workbench überein stimmt und dass das Passwort ebenfalls stimmt.
 
@@ -78,7 +83,7 @@ Wenn der Code erfolgreich war, hast du jetzt die notwendige Datenbank in deiner 
    cd backend
    ```
 
-2. Abhängigkeiten installieren und Backend starten:
+3. Abhängigkeiten installieren und Backend starten:
 
    ```bash
    mvn clean install
@@ -122,6 +127,7 @@ Das Frontend läuft standardmässig auf [http://localhost:5173](http://localhost
 ## 6. Hinweise
 
 - Falls das Backend nicht sauber und ohne Fehler startet, prüfe die Zugangsdaten die du beim Schritt 3 eingetragen hast.
+
 ---
 
 ## 7. Tests ausführen
@@ -154,4 +160,5 @@ npm test
 - Prüfe die Zugangsdaten der MySQL Connection
 - Prüfe ob du dich in den richtigen Ordnern befindest, das Backend startet nur, wenn du im Ordner /backend bist. `cd backend` im VSCode / Codium Terminal. Das Frontend startet nur wenn du im Ordner /frontend-vite bist. `cd frontend-vite`
 - Damit das Backend mit der Datenbank kommunizieren kann, muss die MySQL Workbench geöffnet sein. Stelle sicher, dass die Datenbank vorhanden und befüllt ist.
+
 ---

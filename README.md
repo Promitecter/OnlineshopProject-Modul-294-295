@@ -53,7 +53,7 @@ git --version
 Öffne ein Terminal und führe folgenden Befehl aus:
 
 ```bash
-git clone <REPO-URL>
+git clone https://github.com/Promitecter/OnlineshopProject-Modul-294-295.git
 cd OnlineshopProject
 ```
 
