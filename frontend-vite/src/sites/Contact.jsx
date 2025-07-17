@@ -1,4 +1,3 @@
-// import '../App.css';
 import "../styles/pages/Contact.css";
 
 export default function Contact() {

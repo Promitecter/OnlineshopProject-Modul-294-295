@@ -9,9 +9,6 @@ export default function Frontpage() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    /* Kategorien und Produkte parallel laden, heisst, dass wir beide Fetch-Anfragen gleichzeitig ausführen.
-    Vorteil: Schnellere Ladezeiten, da wir nicht auf die eine oder andere Anfrage warten müssen.
-    Nachteil: Komplexere Fehlerbehandlung, da wir die Fehler beider Anfragen berücksichtigen müssen. */
     Promise.all([
       fetch("http://localhost:8080/api/products").then((res) => res.json()),
       fetch("http://localhost:8080/api/categories").then((res) => res.json()),

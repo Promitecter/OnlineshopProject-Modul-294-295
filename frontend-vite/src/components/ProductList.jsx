@@ -8,10 +8,8 @@ export default function ProductList({
   onDelete,
   onEdit,
 }) {
-  // State für den aktuell gewählten Filter (null = alle)
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
 
-  // Gefilterte Liste
   const filtered = selectedCategoryId
     ? products.filter(
         (products) => products.category?.id === selectedCategoryId
@@ -20,7 +18,6 @@ export default function ProductList({
 
   return (
     <>
-      {/* 1. Kategorie-Filter-Leiste */}
       <div className="category-filters">
         <button
           className={selectedCategoryId === null ? "active" : ""}
@@ -39,7 +36,6 @@ export default function ProductList({
         ))}
       </div>
 
-      {/* 2. Produkt-Grid */}
       <div className="products-grid">
         {filtered.map((products) => (
           <ProductCard

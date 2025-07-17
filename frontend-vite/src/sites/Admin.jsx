@@ -47,7 +47,6 @@ export default function Admin() {
   };
 
   const handleDeleteCategory = (id) => {
-    // 1) Prüfen, ob irgendein Produkt diese Kategorie nutzt
     const alreadyExisting = products.some((p) => p.category?.id === id);
     if (alreadyExisting) {
       alert(
@@ -56,7 +55,6 @@ export default function Admin() {
       return;
     }
 
-    // 2) Sonst löschen und Liste neu laden
     fetch(`http://localhost:8080/api/categories/${id}`, { method: "DELETE" })
       .then((res) => {
         if (!res.ok) {
@@ -64,9 +62,7 @@ export default function Admin() {
             throw new Error(err.error || "Delete failed");
           });
         }
-        // Editing-Form schließen, falls du gerade editierst
         setEditingCategory(null);
-        // Kategorien neu laden
         loadCategories();
       })
       .catch((err) => {

@@ -14,7 +14,6 @@ export default function ProductCard({ product, onDelete, onEdit }) {
       <h2>{product.name}</h2>
       <p>{product.description}</p>
       <p className="product-price">CHF {product.price.toFixed(2)}</p>{" "}
-      {/* toFixed(2) sorgt dafür, dass immer zwei Nachkommastellen angezeigt werden. */}
       <div className="card-actions">
         {typeof onEdit === "function" && (
           <button className="edit-button" onClick={() => onEdit(product)}>
