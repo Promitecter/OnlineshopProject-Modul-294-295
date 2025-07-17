@@ -1,0 +1,6 @@
+.categories-grid
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}

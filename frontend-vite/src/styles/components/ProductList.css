@@ -1,0 +1,32 @@
+.products-grid
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.category-filters
+{
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.category-filters button
+{
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.category-filters button.active
+{
+    background: #333;
+    color: #fff;
+    border-color: #333;
+}

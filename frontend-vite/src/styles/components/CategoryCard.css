@@ -1,0 +1,57 @@
+.category-card
+{
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.category-card h2
+{
+    font-size: 1.25rem;
+    margin: 0.75rem 1rem 0.5rem;
+}
+
+.category-card p
+{
+    margin: 0.5rem 1rem;
+    flex-grow: 1;
+}
+
+.card-actions
+{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+}
+
+.delete-button
+{
+    background-color: #e74c3c;
+    border: none;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delete-button:hover
+{
+    background-color: #c0392b;
+}
+
+.edit-button
+{
+    background-color: #3498db;
+    border: none;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-button:hover
+{
+    background-color: #2980b9;
+}

@@ -1,0 +1,25 @@
+.admin
+{
+    padding: 1rem 0;
+}
+
+.admin h1
+{
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.admin-forms
+{
+    display: flex;
+    align-items: flex-start;
+    gap: 5rem;
+}
+
+@media (max-width: 768px)
+{
+    .admin-forms
+    {
+        flex-wrap: wrap;
+    }
+}
