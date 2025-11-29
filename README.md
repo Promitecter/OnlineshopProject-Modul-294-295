@@ -11,6 +11,7 @@ Dies ist die Methode für das Modul 210 (Installation Hands-off). Es sind keine 
 ### Voraussetzungen
 * Docker Desktop muss installiert sein und laufen.
 * Git
+* Die Ports müssen frei sein, im Zweifelsfall alle anderen Docker Volumes abschalten.
 
 ### Installation & Start
 
@@ -19,18 +20,26 @@ Dies ist die Methode für das Modul 210 (Installation Hands-off). Es sind keine 
    git clone https://github.com/Promitecter/OnlineshopProject-Modul-294-295.git
    cd OnlineshopProject-Modul-294-295
 
-2. **Applikation starten Führe folgenden Befehl im Hauptverzeichnis aus:**
+2. **Applikation starten führe folgenden Befehl im Hauptverzeichnis aus:**
    ```bash
    docker-compose up --build
 
 (Dieser Befehl baut das Backend & Frontend, startet die Datenbank und führt automatisch das Initialisierungs-SQL-Skript aus).
 
-3. Warten bis in der Konsole Logs erscheinen und sich die Container eingependelt haben. Das Backend wartet automatisch via Healthcheck, bis die Datenbank bereit ist.
+3. **Warten bis Container gestartet haben**
+Warten bis in der Konsole Logs erscheinen und sich die Container eingependelt haben. Das Backend wartet automatisch via Healthcheck, bis die Datenbank bereit ist.
 
 4. **Anwendung öffnen**
    ```bash
    Frontend (Shop): http://localhost:5173
    Backend API: http://localhost:8080
+
+5. **Fehlerbehebung Docker**
+Falls die Datenbank leer ist oder Fehler auftreten (z.B. weil ein alter Container noch Daten hält), führe einen kompletten Reset durch:
+
+docker-compose down -v
+
+docker-compose up
 
 # OnlineshopProject-Modul-294-295 (Legacy Methode - nicht empfohlen)
 
