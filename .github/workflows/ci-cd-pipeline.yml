@@ -6,15 +6,14 @@ on:
   pull_request:
     branches: [ "main", "master" ]
 
-# Berechtigungen, damit die Pipeline Pakete auf GitHub speichern darf
+# Berechtigungen
 permissions:
   contents: read
   packages: write
 
 env:
   REGISTRY: ghcr.io
-  # Der Name des Images muss kleingeschrieben sein
-  IMAGE_NAME: ${{ github.repository }}
+  # IMAGE_NAME entfernen wir hier, da wir es unten dynamisch berechnen
 
 jobs:
   build-and-push:
@@ -22,6 +21,11 @@ jobs:
     steps:
       - name: Code auschecken
         uses: actions/checkout@v4
+
+      # NEUER SCHRITT: Wandelt "Promitecter/Onlineshop..." in "promitecter/onlineshop..." um
+      - name: Repository-Namen kleinschreiben
+        run: |
+          echo "IMAGE_NAME=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
       - name: Login bei GitHub Container Registry
         uses: docker/login-action@v3
@@ -36,6 +40,7 @@ jobs:
         with:
           context: ./backend
           push: true
+          # Wir nutzen jetzt die kleingeschriebene Variable aus dem Schritt oben
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/backend:latest
 
       # --- FRONTEND ---
@@ -44,4 +49,5 @@ jobs:
         with:
           context: ./frontend-vite
           push: true
+          # Wir nutzen jetzt die kleingeschriebene Variable aus dem Schritt oben
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/frontend:latest
