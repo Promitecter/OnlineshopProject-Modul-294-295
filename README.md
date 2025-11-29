@@ -20,7 +20,7 @@ Dies ist die Methode für das Modul 210 (Installation Hands-off). Es sind keine 
    cd OnlineshopProject-Modul-294-295
 
 
-# OnlineshopProject-Modul-294-295
+# OnlineshopProject-Modul-294-295 (Legacy Methode - nicht empfohlen)
 
 In diesem Repository befindet sich die Abgabe für die Projektarbeit in den Modulen 294 und 295.
 
