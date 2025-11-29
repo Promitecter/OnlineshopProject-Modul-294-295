@@ -1,3 +1,25 @@
+# OnlineshopProject - Modul 210 (Cloud & Container)
+
+In diesem Repository befindet sich die Abgabe für die Projektarbeit in den Modulen 294, 295 und die Erweiterung für Modul 210. Die Anwendung wurde für Modul 210 mittels Docker containerisiert und verfügt über eine automatisierte Build-Pipeline.
+
+---
+
+## Quick Start (Docker Installation - Empfohlen)
+
+Dies ist die Methode für das Modul 210 (Installation Hands-off). Es sind keine lokalen Installationen von Java, Node.js oder MySQL auf dem Host-System notwendig.
+
+### Voraussetzungen
+* Docker Desktop muss installiert sein und laufen.
+* Git
+
+### Installation & Start
+
+1. **Repository klonen**
+   ```bash
+   git clone [https://github.com/Promitecter/OnlineshopProject-Modul-294-295.git](https://github.com/Promitecter/OnlineshopProject-Modul-294-295.git)
+   cd OnlineshopProject-Modul-294-295
+
+
 # OnlineshopProject-Modul-294-295
 
 In diesem Repository befindet sich die Abgabe für die Projektarbeit in den Modulen 294 und 295.
