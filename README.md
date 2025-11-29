@@ -16,7 +16,7 @@ Dies ist die Methode für das Modul 210 (Installation Hands-off). Es sind keine 
 
 1. **Repository klonen**
    ```bash
-   git clone [https://github.com/Promitecter/OnlineshopProject-Modul-294-295.git](https://github.com/Promitecter/OnlineshopProject-Modul-294-295.git)
+   git clone https://github.com/Promitecter/OnlineshopProject-Modul-294-295.git
    cd OnlineshopProject-Modul-294-295
 
 
