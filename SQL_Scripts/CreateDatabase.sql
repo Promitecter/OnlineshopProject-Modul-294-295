@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS onlineshopdb;
-CREATE DATABASE onlineshopdb;
-USE onlineshopdb;
+-- DROP DATABASE IF EXISTS onlineshopdb;
+-- CREATE DATABASE onlineshopdb;
+-- USE onlineshopdb;
 
 -- 2) Alte Tabellen entfernen (in der richtigen Reihenfolge, wegen den Abhängigkeiten)
 DROP TABLE IF EXISTS products;
