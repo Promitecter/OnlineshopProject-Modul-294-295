@@ -39,7 +39,7 @@ Warten bis in der Konsole Logs erscheinen und sich die Container eingependelt ha
    ```bash
    Frontend (Shop): http://localhost:5173
    Backend API: http://localhost:8080
-```
+   ```
 
 5. **Fehlerbehebung Docker**
 
