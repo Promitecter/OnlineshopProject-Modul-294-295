@@ -20,11 +20,13 @@ Dies ist die Methode für das Modul 210 (Installation Hands-off). Es sind keine 
    ```bash
    git clone https://github.com/Promitecter/OnlineshopProject-Modul-294-295.git
    cd OnlineshopProject-Modul-294-295
+   ```
 
 2. **Applikation starten führe folgenden Befehl im Hauptverzeichnis aus:**
 
    ```bash
    docker-compose up --build
+   ```
 
 (Dieser Befehl baut das Backend & Frontend, startet die Datenbank und führt automatisch das Initialisierungs-SQL-Skript aus).
 
@@ -37,6 +39,7 @@ Warten bis in der Konsole Logs erscheinen und sich die Container eingependelt ha
    ```bash
    Frontend (Shop): http://localhost:5173
    Backend API: http://localhost:8080
+```
 
 5. **Fehlerbehebung Docker**
 
@@ -45,6 +48,7 @@ Falls die Datenbank leer ist oder Fehler auftreten (z.B. weil ein alter Containe
 ```bash
    docker-compose down -v
    docker-compose up
+```
 
 # OnlineshopProject-Modul-294-295 (Legacy Methode - nicht empfohlen)
 
